@@ -12,7 +12,7 @@ CreditStore es una aplicación web diseñada para ayudar a pequeños establecimi
 
 ## Tecnologías utilizadas
 
-- Frontend: Angular
+- Frontend: Angular, Bootstrap
 - Backend: Spring Boot
 - Base de datos: MySQL
 - API: RESTful
