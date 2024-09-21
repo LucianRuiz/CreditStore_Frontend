@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="row p-0 m-0">
+  <div class="home-container mt-4">
+    <div class="greeting-box text-center">
+      <img src="assets/tienda.png" class="me-3" alt="Greeting" style="width: 30px; height: 30px; vertical-align: middle;">
+      <h2 style="display: inline-block; vertical-align: middle;">Buen día, {{usuario?.names}} {{usuario?.lastNames}}!</h2>
+      <!-- <p>Los intereses del mes son S/{{interest | number:'1.2-2'}}</p> -->
+    </div>
+    <div class="container mt-5">
+      <h1 class="title text-center" *ngIf="clients.length > 0">Mis Clientes</h1>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let client of clients">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title">{{ client.name }} {{ client.lastName }}</p>
+              <div class="client-amount">
+                <p>Deuda: S/{{ client.debt | number:'1.2-2' }}</p>
+                <p>Crédito: S/{{ client.creditLine | number:'1.2-2' }}</p>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="progress w-100">
+                  <div class="progress-bar" [ngClass]="getProgressBarClass(client.id)"
+                       [style.width.%]="calculatePercentageUsedById(client.id)" 
+                       [attr.aria-valuenow]="calculatePercentageUsedById(client.id)" 
+                       aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+                <span class="ms-2 text-muted ml-2">{{ calculatePercentageUsedById(client.id) | number:'1.0-0' }}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-primary me-3" (click)="openFormClientAccount()">Agregar Nuevo Cliente</button>
+      <!-- <button class="btn btn-primary" (click)="navigateToAddAccount()">Agregar Nueva Cuenta</button> -->
+    </div>
+  </div>
+</div>

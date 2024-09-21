@@ -1,0 +1,42 @@
+<nav class="custom-navbar" [ngClass]="{'expanded': !isMenuOpen}">
+  <div class="top-section">
+    <div class="logo">
+      <img src="assets/creditstore-logo.svg" alt="CreditStore Logo">
+    </div>
+    <div class="hamburger" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a routerLink="/panel">
+        <img src="assets/icons/home-icon.svg" alt="Icono Inicio" class="icon">
+        <span class="text-white">Inicio</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/clientes">
+        <img src="assets/icons/client-icon.svg" alt="Icono Clientes" class="icon">
+        <span class="text-white">Mis Clientes</span>
+      </a>
+    </li>
+    
+  </ul>
+  <div class="bottom-section">
+    <div class="setting">
+      <a routerLink="/login" (click)="logout()">
+        <i class="text-white bi bi-box-arrow-right"></i>
+        <span class="ms-2 text-white">Salir</span>
+      </a>
+    </div>
+    <div class="divider"></div>
+    <div class="user-info">
+      <div class="d-flex flex-column align-items-center gap-2 d-md-block">
+        <img src="assets/tienda.png" alt="User Profile" class="user-avatar">
+        <span class="user-name">{{usuario?.names}} {{usuario?.lastNames}}</span>
+      </div>
+    </div>
+  </div>
+</nav>

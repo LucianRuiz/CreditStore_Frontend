@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card w-75">
+    <div class="card-header  custom-card-header text-white text-center">
+      <h2 class="mb-0">Detalles de la Cuenta</h2>
+    </div>
+    <div class="card-body">
+      <!-- Tabla de Datos de Entrada -->
+      <div *ngIf="datosEntrada">
+        <div class="row">
+          <div class="col-md-6">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td><strong>Tipo de Tasa:</strong></td>
+                  <td>{{ datosEntrada.tipoTasa }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Tiempo de Tasa:</strong></td>
+                  <td>{{ datosEntrada.tiempoTasa }} días</td>
+                </tr>
+                <tr>
+                  <td><strong>Capitalización:</strong></td>
+                  <td>{{ datosEntrada.tipoTasa === 'EFECTIVA' ? '--' : datosEntrada.capitalizacion }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Tasa:</strong></td>
+                  <td>{{ datosEntrada.tasa / 100 | percent:'1.7-7' }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Tipo de Periodo de Gracia:</strong></td>
+                  <td>{{ mapGracePeriod(datosEntrada.tipoPeriodoGracia) }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Periodo de Gracia (meses):</strong></td>
+                  <td>{{ datosEntrada.periodoGraciaMeses }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Número de Cuotas:</strong></td>
+                  <td>{{ datosEntrada.numeroCuotas }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Límite de Crédito:</strong></td>
+                  <td>S/{{ datosEntrada.limiteCredito |number:'1.2-2' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td><strong>Tipo de Crédito:</strong></td>
+                  <td>{{ datosEntrada.tipoCredito }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Monto del Préstamo:</strong></td>
+                  <td>S/{{ datosEntrada.montoPrestamo|number:'1.2-2'  }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Días de Atraso:</strong></td>
+                  <td>{{ datosEntrada.diasAtraso }} días</td>
+                </tr>
+                <tr>
+                  <td><strong>Tasa Moratoria:</strong></td>
+                  <td>{{ datosEntrada.tasaMoratoria / 100 | percent:'1.7-7' }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Fecha Inicial:</strong></td>
+                  <td>{{ datosEntrada.fechaInicial | date: 'dd MMM, yyyy' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tabla de Datos de Salida -->
+<div class="container d-flex justify-content-center mt-4" *ngIf="datosSalidaList && datosSalidaList.length">
+  <table class="table table-bordered table-striped w-75">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">NRO.</th>
+        <th scope="col">TASA</th>
+        <th scope="col">TEM</th>
+        <th scope="col">P.G.</th>
+        <th scope="col">SALDO INICIAL</th>
+        <th scope="col">INTERESES</th>
+        <th scope="col">INTERES MORATORIO</th>
+        <th scope="col">AMORT</th>
+        <th scope="col">CUOTA</th>
+        <th scope="col">SALDO FINAL</th>
+        <th scope="col">FECHA DE VENCIMIENTO</th>
+        <th scope="col">ESTADO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salida of datosSalidaList.slice(1); let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ salida.account.valorTasa/100|percent:'1.7-7'  }}</td>
+        <td>{{ salida.tem | percent:'1.7-7' }}</td>
+        <td>{{ mapGracePeriod(salida.account.plazoGracia) }}</td>
+        <td>S/{{ salida.saldoInicial | number:'1.2-2' }}</td>
+        <td>S/{{ salida.intereses | number:'1.2-2' }}</td>
+        <td>S/{{ salida.interesMora | number:'1.2-2' }}</td>
+        <td>S/{{ salida.amortizacion | number:'1.2-2' }}</td>
+        <td>S/{{ salida.cuota | number:'1.2-2' }}</td>
+        <td>S/{{ salida.saldoFinal | number:'1.2-2' }}</td>
+        <td>{{ salida.fecha }}</td>
+        <td [ngClass]="{'text-success': salida.estado === 'PAGADO', 'text-danger': salida.estado === 'PENDIENTE POR_PAGAR'}">
+          {{ salida.estado.replace('_', ' ') }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

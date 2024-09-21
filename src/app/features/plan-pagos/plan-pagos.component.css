@@ -1,0 +1,28 @@
+.text-success {
+  color: green;
+}
+
+.text-danger {
+  color: red;
+}
+
+.container {
+  max-width: 1200px; /* Ajusta el ancho máximo del contenedor */
+}
+
+.card {
+  width: 100%;
+}
+
+.card-header {
+  text-align: center;
+}
+
+.table td {
+  vertical-align: middle; /* Centra verticalmente el texto en las celdas */
+}
+
+.custom-card-header {
+  background-color: #05AD75; 
+  color: #ffffff; 
+}

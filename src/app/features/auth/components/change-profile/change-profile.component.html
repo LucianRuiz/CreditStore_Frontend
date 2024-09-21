@@ -1,0 +1,23 @@
+<div class="the-modal-container">
+    <h1> <strong> Opciones de Perfil</strong></h1>
+    <div class="change-profile">
+      <div class="profile-section">
+        <h3> <strong>Cambiar Foto De Perfil</strong></h3>
+        <div class="profile-picture" (click)="onProfilePictureClick()">
+          <img [src]="profilePicture" alt="Profile Picture">
+          <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+        </div>
+      </div>
+      <div class="name-section">
+        <h3><strong>Cambiar Nombre De Tienda</strong></h3>
+        <mat-form-field class="input">
+          <input matInput >
+          <button mat-icon-button matSuffix>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-button class="save-button">Guardar</button>
+  </div>
+  

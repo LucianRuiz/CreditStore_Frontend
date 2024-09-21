@@ -1,0 +1,153 @@
+/* Estilo base */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho máximo para pantallas grandes */
+    box-sizing: border-box;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    font-weight: bold;
+    color: darkgreen;
+    text-align: center;
+  }
+  
+  .sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .section1, .section2 {
+    flex: 1;
+    padding: 10px;
+    margin: 10px 0;
+    min-width: 280px;
+    box-sizing: border-box;
+  }
+  
+    
+  .form {
+    width: 100%;
+  }
+  
+  .input {
+    width: 100%;
+  }
+  
+  .text {
+    color: darkgreen;
+    padding-top: 5px;
+  }
+  
+  .help {
+    font-size: 100%;
+  }
+  
+  .selector {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .radio {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .radio-button {
+    flex: 1;
+  }
+  
+  .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0;
+  }
+  
+  /* Media queries para pantallas más pequeñas */
+  @media (max-width: 768px) {
+  
+    .container {
+      padding: 0px;
+    }
+  
+    .content {
+      padding: 0px;
+    }
+  
+    .title {
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+  
+    .section1, .section2 {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .radio {
+      flex-direction: column;
+    }
+  
+    .radio-button {
+      margin-bottom: 10px;
+    }
+  
+    .add-button {
+      width: 100%;
+    }
+  }
+  
+  /* Media queries para pantallas extra pequeñas */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0px;
+    }
+    
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    .content {
+      padding: 0px;
+    }
+  
+    .text {
+      font-size: 1rem;
+    }
+  
+    .selector {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  
+    .add-button {
+      width: 100%;
+    }
+  }

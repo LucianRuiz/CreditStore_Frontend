@@ -1,0 +1,49 @@
+.the-modal-container {
+    text-align: center;
+    padding: 20px;
+    color: #05AD75;
+  }
+  
+  .change-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; 
+  }
+  
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .name-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-picture img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }
+  
+  .input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input input {
+    margin-right: 8px;
+  }
+  
+  .save-button {
+    background-color: #05AD75; /* Match the button color */
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    color:white;
+  }
+  

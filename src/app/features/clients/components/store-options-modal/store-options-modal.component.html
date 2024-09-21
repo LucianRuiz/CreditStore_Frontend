@@ -1,0 +1,17 @@
+<div class="custom-dialog-container">
+    <h2 class="form-title">Opciones de tienda</h2>
+    <form>
+      <div class="form-group">
+        <label for="interestRate">Tasa de interés moratoria</label>
+        <input matInput type="text" id="interestRate" [(ngModel)]="interestRate" name="interestRate" (blur)="formatInterestRate()" placeholder="12%">
+      </div>
+      <div class="form-group">
+        <label for="cokValue">Ingresar el valor COK</label>
+        <input matInput type="text" id="cokValue" [(ngModel)]="cokValue" name="cokValue" (blur)="validateCokValue()" placeholder="Ingrese el valor COK">
+      </div>
+      <div class="form-actions">
+        <button mat-raised-button color="" (click)="save()">Guardar</button>
+      </div>
+    </form>
+  </div>
+  

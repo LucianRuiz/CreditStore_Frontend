@@ -1,0 +1,40 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="content">
+        <div class="clients-container">
+            <div class="clients-header d-flex justify-content-center align-items-center">
+                <h1 class="title">Pagos</h1>
+            </div>
+            <div class="filter-container d-flex justify-content-center align-items-center mt-3">
+                <div class="form-group mr-3">
+                    <label for="startDate">Desde:</label>
+                    <input id="startDate" type="date" class="form-control" [(ngModel)]="startDate">
+                </div>
+                <div class="form-group mr-3">
+                    <label for="endDate">Hasta:</label>
+                    <input id="endDate" type="date" class="form-control" [(ngModel)]="endDate">
+                </div>
+                <button (click)="filterPayments()" class="btn btn-primary mt-4 me-3">Filtrar</button>
+                <button (click)="openAddPaymentModal()" class="btn btn-primary mt-4">Añadir Pago</button>
+            </div>
+            <div class="clients-table mt-3">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let payment of filteredPayments">
+                            <td>{{payment.id}}</td>
+                            <td>{{payment.date}}</td>
+                            <td>S/ {{payment.amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

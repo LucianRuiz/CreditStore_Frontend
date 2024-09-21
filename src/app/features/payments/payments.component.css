@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .clients-container {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .clients-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .export-button {
+    background-color: #05AD75;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .clients-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .pagination select {
+    margin-left: 10px;
+  }
+  
+  .pagination-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pagination-buttons button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+  
+  .pagination-buttons button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .clients-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .export-button {
+      margin-top: 10px;
+    }
+  }
+  .title {
+    color: #05AD75;
+  }
+
+.filter-container .form-group {
+    margin-right: 20px;
+  }
+  

@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="content">
+    <h1>Ingresos Mensuales</h1>
+    <div class="controls">
+      <mat-form-field appearance="fill">
+        <mat-label>Ganancia</mat-label>
+        <mat-select>
+          <mat-option value="ganancia">Ganancia</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Este año</mat-label>
+        <mat-select>
+          <mat-option value="este-ano">Este año</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-card>
+      <div class="chart-container">
+        <canvas #lineChart></canvas>
+      </div>
+    </mat-card>
+    <div class="stats">
+      <mat-card *ngFor="let stat of estadisticas">
+        <mat-card-header>
+          <mat-icon>{{ stat.icon }}</mat-icon>
+          <mat-card-title>{{ stat.label }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ stat.value }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

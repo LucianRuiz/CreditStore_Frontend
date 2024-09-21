@@ -1,0 +1,35 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="content">
+    <div class="clients-container">
+      <div class="clients-header d-flex justify-content-center align-items-center">
+        <h1 class="title">Mis Clientes</h1>
+      </div>
+      <div class="clients-table mt-3">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">DNI</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fecha de nacimiento</th>
+              <th scope="col">Linea de Crédito</th>
+              <th scope="col">Deuda</th>
+              <th scope="col">Ver Creditos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let client of clients" >
+              <td>{{ client.dni }}</td>
+              <td>{{ client.name }} {{ client.lastName }}</td>
+              <td>{{ client.birthDate | date: 'dd MMM, yyyy' }}</td>
+              <td>S/{{ client.creditLine | number:'1.2-2'  }}</td>
+              <td>S/{{ client.debt | number:'1.2-2'}}</td>
+              <td><button type="button" class="btn btn-success" (click)="verCuentas(client.id,client.name,client.lastName)">CREDITOS</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,21 @@
+
+.container-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0!important;
+  padding: 0!important;
+  background-color: rgb(250, 240, 221);
+}
+
+.logo {
+  width: 100%;
+  max-width: 400px;
+}
+
+.logo .img {
+    width: 100%;
+    height: auto;
+}

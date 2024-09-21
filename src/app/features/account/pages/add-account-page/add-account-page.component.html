@@ -1,0 +1,136 @@
+<app-navbar></app-navbar>
+<div class="container text-center">
+  <div class="content">
+    <h1 class="h1 fw-medium mb-5 title">Agregar Crédito</h1>
+    <form [formGroup]="formCredit" class="needs-validation" (ngSubmit)="onSubmit()">
+      <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+          <h4 class="text">Valor de Compra
+            <mat-icon matTooltip="El precio total de la compra realizada, incluyendo impuestos y descuentos" class="help">help_outline</mat-icon>
+          </h4>
+          <div class="input-group flex-nowrap">
+            <input type="number" id="purchaseValue" class="form-control" placeholder="Ingrese el valor de la compra"
+              formControlName="purchaseValue">
+          </div>
+          <div class="invalid-feedback d-block" app-field-error controlName="purchaseValue"></div>
+
+          <h4 class="text">Tipo de Tasa
+            <mat-icon matTooltip="Elija si la tasa de interés es Efectiva (compuesta) o Nominal (simple)" class="help">help_outline</mat-icon>
+          </h4>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" (change)="changeTipoTasa('EFECTIVA')"
+              formControlName="interestType" value="EFECTIVA" />
+            <label class="form-check-label"> Efectiva </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" (change)="changeTipoTasa('NOMINAL')"
+              formControlName="interestType" value="NOMINAL" />
+            <label class="form-check-label"> Nominal </label>
+          </div>
+
+          <h4 class="text">Capitalización de Tasa
+            <mat-icon matTooltip="Frecuencia con la que se aplica la capitalización de la tasa de interés (mensual, trimestral, etc.)" class="help">help_outline</mat-icon>
+          </h4>
+          <ng-select formControlName="capitalizationPeriod" placeholder="Seleccione la capitalización de la tasa"
+            [searchable]="false">
+            <ng-option *ngFor="let option of capitalizationTasaOptions"
+              [value]="option.value">{{option.viewValue}}</ng-option>
+          </ng-select>
+          <div class="invalid-feedback d-block" app-field-error controlName="capitalizationPeriod"></div>
+
+          <h4 class="text">Tiempo Tasa
+            <mat-icon matTooltip="Período para el cual se aplica la tasa de interés (mensual, bimestral, cuatrimestral, semestral, anual)" class="help">help_outline</mat-icon>
+          </h4>
+          <ng-select formControlName="tiempoTasa" placeholder="Seleccione el tiempo de la tasa" [searchable]="false">
+            <ng-option *ngFor="let tiempo of tiempoTasaOptions" [value]="tiempo.value">{{tiempo.viewValue}}</ng-option>
+          </ng-select>
+          <div class="invalid-feedback d-block" app-field-error controlName="tiempoTasa"></div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div>
+            <h4 class="text">Valor de Tasa
+              <mat-icon matTooltip="Porcentaje de interés aplicado al crédito" class="help">help_outline</mat-icon>
+            </h4>
+            <div class="input-group flex-nowrap">
+              <input type="number" id="interestRate" class="form-control" placeholder="Ingrese el porcentaje de tasa"
+                formControlName="interestRate">
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="invalid-feedback d-block" app-field-error controlName="interestRate"></div>
+
+          <h4 class="text">Tipo de Crédito
+            <mat-icon matTooltip="Seleccione si el crédito es para pagar a vencimiento (una sola cuota final) o pago mensual" class="help">help_outline</mat-icon>
+          </h4>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" (change)="changeTipoCredito('VENCIMIENTO')" formControlName="creditType"
+              value="VENCIMIENTO" />
+            <label class="form-check-label"> Pago a Vencimiento </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" (change)="changeTipoCredito('MENSUAL')" formControlName="creditType"
+              value="MENSUAL" />
+            <label class="form-check-label"> Pago Mensual </label>
+          </div>
+
+          <h4 class="text">N° de Cuotas
+            <mat-icon matTooltip="Cantidad total de pagos que se realizarán para saldar el crédito" class="help">help_outline</mat-icon>
+          </h4>
+          <ng-select formControlName="sharesNumber" placeholder="Seleccione la cantidad de cuotas" [searchable]="false">
+            <ng-option *ngFor="let shareNumber of sharesNumber"
+              [value]="shareNumber.value">{{shareNumber.viewValue}}</ng-option>
+          </ng-select>
+          <div class="invalid-feedback d-block" app-field-error controlName="sharesNumber"></div>
+
+          <div class="form-group col-12  mb-1">
+            <h4 class="text">Fecha de Pago
+              <mat-icon matTooltip="La fecha en la que se realizará el pago del crédito" class="help">help_outline</mat-icon>
+            </h4>
+            <input type="date" class="form-control" formControlName="paymentDate"
+              placeholder="Selecciona tu fecha de pago">
+            <div class="invalid-feedback d-block" app-field-error controlName="paymentDate"></div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <h4 class="text">Plazo de Gracia
+            <mat-icon matTooltip="Seleccione si desea un período sin pagos: Total (sin pagos), Parcial (pagos reducidos), No (sin gracia)" class="help">help_outline</mat-icon>
+          </h4>
+          <ng-select formControlName="gracePeriod" (change)="changePeriodoGracia($event)"
+            placeholder="Seleccione el plazo de gracia" [searchable]="false">
+            <ng-option *ngFor="let option of gracePeriod" [value]="option.value">{{option.viewValue}}</ng-option>
+          </ng-select>
+          <div class="invalid-feedback d-block" app-field-error controlName="gracePeriod"></div>
+
+          <h4 class="text">Periodo(s) de Gracia
+            <mat-icon matTooltip="Cantidad de períodos de gracia (meses) en los que se aplicará el plazo de gracia seleccionado" class="help">help_outline</mat-icon>
+          </h4>
+          <ng-select formControlName="gracePeriodLength" placeholder="Elija la cantidad de Periodos de Gracia"
+            [searchable]="false">
+            <ng-option *ngFor="let graceLength of gracePeriodLength"
+              [value]="graceLength.value">{{graceLength.viewValue}}</ng-option>
+          </ng-select>
+          <div class="invalid-feedback d-block" app-field-error controlName="gracePeriodLength"></div>
+
+          <h4 class="text">Tasa Efectiva Moratoria mensual
+            <mat-icon matTooltip="Porcentaje de interés aplicado en caso de retraso en los pagos" class="help">help_outline</mat-icon>
+          </h4>
+          <div class="input-group flex-nowrap">
+            <input type="number" id="tasaMoratoria" class="form-control"
+              placeholder="Ingrese el porcentaje de tasa moratoria" formControlName="tasaMoratoria">
+            <div class="input-group-append">
+              <span class="input-group-text">%</span>
+            </div>
+          </div>
+          <div class="invalid-feedback d-block" app-field-error controlName="tasaMoratoria"></div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="mt-5 mb-5 btn btn-primary add-button">Agregar Crédito</button>
+      </div>
+    </form>
+  </div>
+</div>

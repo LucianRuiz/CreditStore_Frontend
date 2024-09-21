@@ -1,0 +1,61 @@
+<form [formGroup]="form" class="needs-validation" (ngSubmit)="onSave()">
+  <div class="modal-header p-3 pe-0">
+    <div class="row justify-content-between align-items-center w-100 g-0">
+      <div class="col-lg-11 col-10  pe-0 text-center">
+        <h2 class="modal-title h2 mb-0">Registrar Cliente</h2>
+      </div>
+      <div class="col-auto p-0 ">
+        <a type="button" class="btn btn-link link-success fw-medium text-decoration-none"
+          (click)="modalService.close(false)">
+          <i class="bi bi-x-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="row mb-2">
+      <div class="form-group col-md-6">
+        <label class="form-label">Nombre *</label>
+        <input class="form-control" type="text" formControlName="name" placeholder="Ingresa tu nombre">
+        <div class="invalid-feedback d-block" app-field-error controlName="name"> </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="form-label">Apellidos *</label>
+        <input type="text" class="form-control" formControlName="lastName" placeholder="Ingresa tus apellidos">
+        <div class="invalid-feedback d-block" app-field-error controlName="lastName"> </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="form-group col-md-6">
+        <label class="form-label">DNI *</label>
+        <input type="text" appNumericInput class="form-control" formControlName="dni" placeholder="Ingresa tu DNI">
+        <div class="invalid-feedback d-block" app-field-error controlName="dni"> </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="form-label">Fecha de Nacimiento *</label>
+        <input type="date" class="form-control" formControlName="birthDate"
+          placeholder="Selecciona tu fecha de nacimiento">
+        <div class="invalid-feedback d-block" app-field-error controlName="birthDate"> </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="form-group">
+        <label class="form-label">Dirección </label>
+        <input type="text" class="form-control" formControlName="address" placeholder="Ingresa tu dirección">
+        <div class="invalid-feedback d-block" app-field-error controlName="address"> </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="form-group col-md-6">
+        <label class="form-label">Monto máximo de deuda *</label>
+        <input [min]="0" type="number" class="form-control" formControlName="creditLine"
+          placeholder="Ingresa el monto máximo de deuda">
+        <div class="invalid-feedback d-block" app-field-error controlName="creditLine"> </div>
+      </div>
+      
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Agregar</button>
+    </div>
+  </div>
+</form>

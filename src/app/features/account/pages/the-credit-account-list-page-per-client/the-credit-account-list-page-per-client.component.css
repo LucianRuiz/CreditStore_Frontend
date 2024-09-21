@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .accounts-container {
+    width: 100%;
+    max-width: 170vh;
+  }
+  
+  .accounts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .nombre{
+    color: #05AD75;;
+  }
+  .export-button {
+    background-color: #05AD75;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .accounts-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .paginator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .paginator select {
+    margin-left: 10px;
+  }
+  
+  .paginator-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .paginator-buttons button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+  
+  .paginator-buttons button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .accounts-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .export-button {
+      margin-top: 10px;
+    }
+  }

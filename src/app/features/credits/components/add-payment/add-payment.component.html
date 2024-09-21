@@ -1,0 +1,38 @@
+<form [formGroup]="form" class="needs-validation" (ngSubmit)="onSave()">
+  <div class="modal-header p-3 pe-0">
+    <div class="row justify-content-between align-items-center w-100 g-0">
+      <div class="col-lg-11 col-10 pe-0 text-center">
+        <h2 class="modal-title h2 mb-0">Agregar Pago</h2>
+      </div>
+      <div class="col-auto p-0">
+        <a type="button" class="btn btn-link link-success fw-medium text-decoration-none" (click)="modalService.close(false)">
+          <i class="bi bi-x-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="text-center mb-3">
+      <h4>Total de deuda: {{ totalDebt | number: '1.2-2' }}</h4>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label">Fecha de Pago *</label>
+      <input type="date" class="form-control" formControlName="paymentDate" placeholder="Selecciona la fecha de pago">
+      <div class="invalid-feedback d-block" *ngIf="form.get('paymentDate')!.invalid && form.get('paymentDate')!.touched">
+        Por favor, selecciona una fecha válida.
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label">Monto *</label>
+      <input type="number" [min]="0" [max]="totalDebt" class="form-control" formControlName="amount" placeholder="Ingresa el monto">
+      <div class="invalid-feedback d-block" *ngIf="form.get('amount')!.invalid && form.get('amount')!.touched">
+        <span *ngIf="form.get('amount')!.errors?.['required']">Por favor, ingresa un monto válido.</span>
+        <span *ngIf="form.get('amount')!.errors?.['min']">El monto debe ser mayor que cero.</span>
+        <span *ngIf="form.get('amount')!.errors?.['max']">El monto no puede ser mayor que la deuda total (S/ {{totalDebt | number:'1.2-2'}}).</span>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-primary me-2" type="submit" [disabled]="!form.valid">Agregar</button>
+    </div>
+  </div>
+</form>

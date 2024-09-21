@@ -1,0 +1,72 @@
+@import url('assets/styles/toast.css');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Configuración global de estilos*/
+
+.form-control:focus {
+  border-color: #05ad75 !important;
+  box-shadow: none;
+}
+.form-control::placeholder {
+  color: #b8b8b8 !important;
+  font-weight: 300 !important;
+}
+
+
+
+.h1,.h2,.h3,.h4,.h5,.h6 {
+  color: #29624F !important;
+}
+
+.btn-primary {
+  background-color: #05ad75 !important;
+  border-color: #05ad75 !important;
+}
+
+.btn-primary:hover {
+  background-color: #049162 !important;
+  border-color: #29624F !important;
+}
+
+
+.screen {
+  position: fixed;
+  z-index: 10000;
+  background-color: black;
+  opacity: 0.75;
+  width: 100vw;
+  height: 100vh;
+}
+
+.spinner {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.hover-pointer {
+  cursor: pointer;
+}
+
+a {
+  color: #05ad75 !important;
+}
+
+.ng-select-container {
+  border-color: #05ad75 !important;
+  box-shadow: none !important;
+}
+
+.ng-option-selected {
+  background-color: #1bf1aa40 !important;
+}
+
+.form-check-input:checked {
+  background-color: #05ad75 !important;
+  border-color: #05ad75 !important;
+}

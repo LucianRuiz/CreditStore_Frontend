@@ -1,0 +1,151 @@
+<div class="row m-0 d-flex justify-content-center min-vh-100">
+  <app-logo-screen class="d-none d-lg-flex col-md-6 m-0 p-0"></app-logo-screen>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"
+    class="needs-validation my-3 col-sm-6 col-md-6 gap-4 d-flex d-flex flex-column justify-content-center px-lg-5">
+    <div class="d-flex justify-content-center">
+      <div class="logo d-lg-none ">
+        <img class="img" src="../../../../assets/credistore2logo.png" alt="CreditStore Logo">
+      </div>
+    </div>
+    <div class="text-center">
+      <h1 class="h1 fs-1 fw-medium">Crear Cuenta</h1>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label">Nombre *
+          <mat-icon matTooltip="Tu nombre completo" class="help">help_outline</mat-icon>
+        </label>
+        <input class="form-control" type="text" formControlName="name" placeholder="Ingresa tu nombre">
+        <div class="invalid-feedback d-block" app-field-error controlName="name"> </div>
+        <div
+          *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)"
+          class="invalid-feedback d-block">
+          {{ registerForm.get('name')?.getError('noNumbers') || 'El campo es obligatorio' }}
+        </div>
+      </div>
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label">Apellidos *
+          <mat-icon matTooltip="Tus apellidos" class="help">help_outline</mat-icon>
+        </label>
+        <input type="text" class="form-control" formControlName="lastName" placeholder="Ingresa tus apellidos">
+        <div class="invalid-feedback d-block" app-field-error controlName="lastName"> </div>
+        <div
+          *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)"
+          class="invalid-feedback d-block">
+          {{ registerForm.get('lastName')?.getError('noNumbers') || 'El campo es obligatorio' }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label">DNI *
+          <mat-icon matTooltip="Documento Nacional de Identidad (8 dígitos)" class="help">help_outline</mat-icon>
+        </label>
+        <input type="text" appNumericInput class="form-control" formControlName="dni" placeholder="Ingresa tu DNI">
+        <div class="invalid-feedback d-block" app-field-error controlName="dni"> </div>
+        <div
+          *ngIf="registerForm.get('dni')?.invalid && (registerForm.get('dni')?.dirty || registerForm.get('dni')?.touched)"
+          class="invalid-feedback d-block">
+          {{ 'El DNI debe tener exactamente 8 dígitos' }}
+        </div>
+      </div>
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label">Fecha de Nacimiento *
+          <mat-icon matTooltip="Tu fecha de nacimiento" class="help">help_outline</mat-icon>
+        </label>
+        <input type="date" class="form-control" formControlName="birthDate"
+          placeholder="Selecciona tu fecha de nacimiento">
+        <div class="invalid-feedback d-block" app-field-error controlName="birthDate"> </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label">Correo *
+          <mat-icon matTooltip="Tu dirección de correo electrónico" class="help">help_outline</mat-icon>
+        </label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Ingresa tu correo electrónico">
+        <div class="invalid-feedback d-block" app-field-error controlName="email"> </div>
+        <div
+          *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)"
+          class="invalid-feedback d-block">
+          {{ 'Por favor, ingrese un correo electrónico válido' }}
+        </div>
+      </div>
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label">Nombre de la tienda *
+          <mat-icon matTooltip="El nombre de tu tienda" class="help">help_outline</mat-icon>
+        </label>
+        <input class="form-control" type="text" formControlName="storeName" placeholder="Ingresa el nombre de la tienda">
+        <div class="invalid-feedback d-block" app-field-error controlName="storeName"> </div>
+        <div
+          *ngIf="registerForm.get('storeName')?.invalid && (registerForm.get('storeName')?.dirty || registerForm.get('storeName')?.touched)"
+          class="invalid-feedback d-block">
+          {{ registerForm.get('storeName')?.getError('noNumbers') || 'El campo es obligatorio' }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label" for="password">Contraseña
+          <mat-icon matTooltip="Elige una contraseña segura" class="help">help_outline</mat-icon>
+        </label>
+        <div class="input-container">
+          <i class="fas fa-lock"></i>
+          <input class="form-control" type="password" id="password" formControlName="password" required
+            (input)="updatePasswordRequirements()">
+        </div>
+        <div
+          *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)"
+          class="invalid-feedback d-block">
+          {{ 'El campo es obligatorio' }}
+        </div>
+      </div>
+      <div class="form-group col-lg-6 mb-1">
+        <label class="form-label" for="confirmPassword">Confirmar Contraseña
+          <mat-icon matTooltip="Repite la contraseña" class="help">help_outline</mat-icon>
+        </label>
+        <div class="input-container">
+          <i class="fas fa-lock"></i>
+          <input class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword" required
+            (input)="updatePasswordRequirements()">
+        </div>
+        <div
+          *ngIf="registerForm.get('confirmPassword')?.invalid && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"
+          class="invalid-feedback d-block">
+          {{ 'Las contraseñas no coinciden' }}
+        </div>
+      </div>
+    </div>
+    <div class="password-requirements">
+      <p id="lowercase" [ngClass]="{ 'invalid': !passwordLowerCaseValid, 'valid': passwordLowerCaseValid }">
+        <i class="fas" [ngClass]="{ 'fa-times': !passwordLowerCaseValid, 'fa-check': passwordLowerCaseValid }"></i>
+        * Contiene al menos una minúscula
+      </p>
+      <p id="uppercase" [ngClass]="{ 'invalid': !passwordUpperCaseValid, 'valid': passwordUpperCaseValid }">
+        <i class="fas" [ngClass]="{ 'fa-times': !passwordUpperCaseValid, 'fa-check': passwordUpperCaseValid }"></i>
+        * Contiene al menos una mayúscula
+      </p>
+      <p id="specialChar" [ngClass]="{ 'invalid': !passwordSpecialCharValid, 'valid': passwordSpecialCharValid }">
+        <i class="fas" [ngClass]="{ 'fa-times': !passwordSpecialCharValid, 'fa-check': passwordSpecialCharValid }"></i>
+        * Contiene un carácter especial
+      </p>
+      <p id="number" [ngClass]="{ 'invalid': !passwordNumberValid, 'valid': passwordNumberValid }">
+        <i class="fas" [ngClass]="{ 'fa-times': !passwordNumberValid, 'fa-check': passwordNumberValid }"></i>
+        * Contiene al menos un número
+      </p>
+      <p id="passwordMatch" [ngClass]="{ 'invalid': !passwordsMatch, 'valid': passwordsMatch }">
+        <i class="fas" [ngClass]="{ 'fa-times': !passwordsMatch, 'fa-check': passwordsMatch }"></i>
+        * Las contraseñas coinciden
+      </p>
+    </div>
+    <div class="d-flex flex-column align-items-center gap-2">
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrarse</button>
+      <a class="hover-pointer" (click)="navigateToInicio()">¿Ya eres miembro? Iniciar Sesión</a>
+    </div>
+  </form>
+</div>
+<div *ngIf="spinner" class="screen d-flex justify-content-center align-items-center">
+  <div class="spinner-border text-primary spinner" role="status">
+    <span class="sr-only"></span>
+  </div>
+</div>

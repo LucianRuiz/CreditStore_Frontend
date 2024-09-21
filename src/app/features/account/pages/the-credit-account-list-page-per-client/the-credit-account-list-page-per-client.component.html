@@ -1,0 +1,51 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="content">
+      <div class="accounts-container">
+        <div class="accounts-header">
+          <h2 class="nombre">Creditos de {{nombre}}</h2>
+          <button type="button" class="btn btn-success" (click)="createcredit()">CREAR CRÉDITO</button>
+        </div>
+          <div class="accounts-table mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID de Transacción</th>
+                  <th>Valor de Compra</th>
+                  <th>Tipo de Tasa</th>
+                  <th>Periodo de Capitalización</th>
+                  <th>Valor de Tasa</th>
+                  <th>Periodo de Tasa</th>
+                  <th>Numero de Cuotas</th>
+                  <th>Plazo de Gracia</th>
+                  <th>Periodo de Gracia</th>
+                  <th>Fecha de Pago</th>
+                  <th scope="col">Ver Pagos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let account of accounts" (click)="planpagos(account.id)">
+                  <td>{{ account.id }}</td>
+                  <td>S/ {{ account.valorCompra | number: '1.2-2' }}</td>
+                  <td>{{ account.tipoTasa}}</td>
+                  <td>{{ account.tipoTasa === 'EFECTIVA' ? '--' :capitalizacionText(account.capitalizacionTasa) }}</td>
+                  <td>{{ account.valorTasa / 100 | percent: '1.7-7' }}</td>
+                  <td>{{ account.tipoCredito }}</td>
+                  <td>{{ account.numeroCuotas }}</td>
+                  <td>{{ account.plazoGracia }}</td>
+                  <td>{{ account.periodoGracia }}</td>
+                  <td>{{ account.paymentDate }}</td>
+                  <td>
+                    <button type="button" class="btn btn-success" (click)="verpagos(account.id)">PAGOS</button>
+                  </td>
+                </tr>
+              </tbody>
+
+
+
+            </table>
+          </div>
+
+      </div>
+    </div>
+  </div>
